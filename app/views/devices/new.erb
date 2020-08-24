@@ -4,6 +4,9 @@
 <form method="POST" action="/devices/new">
 
 
+    <% if flash[:error] %>
+        <p><%= flash[:error] %></p>
+    <% end %>
     <label>Create a device: <br>
         <label>Device name: <input type="text" name="custom_name"></label>
         <label>Device power usage (watts): <input type="text" name="custom_power"></label>
@@ -11,7 +14,7 @@
     <br><br>
     <label>Choose a device:
         <select name="name">
-            <option value="" selected disabled hidden>Add your own device</option>
+            <option value="" selected disabled hidden>Choose device</option>
             <% @options.each do |opt| %>
                 <option value="<%= opt.name %>"><%= opt.name %></option>
             <% end %>

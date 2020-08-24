@@ -16,8 +16,19 @@ class DevicesController < ApplicationController
         erb :'devices/new'
     end
 
-    post '/divices/new' do
-        binding.pry
+    post '/devices/new' do
+        if params[:custom_name] != "" && params[:name]
+            flash[:error] = "Only 1 name input allowed"
+            redirect '/devices/new'
+        end
+        
+        user = current_user
+        Device.create(
+            name: ,
+            power: ,
+            standby: ,
+            usage: 
+        )
     end
 
 
