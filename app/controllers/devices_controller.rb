@@ -10,9 +10,14 @@ class DevicesController < ApplicationController
         erb :'devices/home'
     end
     
-    get '/appliances/new' do
+    get '/devices/new' do
+        @options = Option.all
         @user = current_user
-        erb :'appliances/new'
+        erb :'devices/new'
+    end
+
+    post '/divices/new' do
+        binding.pry
     end
 
 

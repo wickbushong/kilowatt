@@ -1,0 +1,19 @@
+<h1>Add a device</h1>
+
+<h3>Choose a device from the drop down menu or create a custom device</h3>
+<form method="POST" action="/devices/new">
+
+    <label>Choose a device:
+        <select name="name">
+            <% @options.each do |opt| %>
+                <option value="<%= opt.name %>"><%= opt.name %></option>
+            <% end %>
+        </select>
+    </label>
+    <br><br><br>
+    <label>Create a device: 
+        <label>Device name: <input type="text" name="custom_name"></label>
+        <label>Device power usage (watts): <input type="text" name="custom_power"></label>
+    </label>
+
+</form>

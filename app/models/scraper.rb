@@ -17,4 +17,8 @@ class Scraper
         end
     end
 
+    def self.call
+        self.new.options
+    end
+
 end
