@@ -1,0 +1,3 @@
+# class AppliancesController < ApplicationController
+
+# end
