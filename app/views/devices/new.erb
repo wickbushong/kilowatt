@@ -16,7 +16,7 @@
         <select name="name">
             <option value="" selected disabled hidden>Choose device</option>
             <% @options.each do |opt| %>
-                <option value="<%= opt.name %>"><%= opt.name %></option>
+                <option value='<%= opt.name %>'><%= opt.name %></option>
             <% end %>
         </select>
     </label>

@@ -10,7 +10,7 @@ class Scraper
     def options
         @doc.css("tbody tr").each do |row|
             Option.create(
-                name: row.css("td")[0].text,
+                name: row.css("td")[0].text.gsub(/"/, " inch"),
                 power: row.css("td")[2].text.gsub(/[a-zA-Z]/, "").to_f,
                 standby: row.css("td")[3].text.gsub(/[a-zA-Z]/, "").to_f
             )
