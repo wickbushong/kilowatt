@@ -8,8 +8,9 @@ class Scraper
     end
 
     def inspect
-        binding.pry
+        # binding.pry
     end
+
 end
 
-Scraper.new.inspect
+# Scraper.new.inspect
