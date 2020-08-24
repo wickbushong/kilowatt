@@ -5,15 +5,12 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
-        if User.find_by(username: params[:username])
-            # message: username taken
-            redirect '/signup'
-        elsif params[:username] == "" || params[:email] == "" || params[:password] == ""
-            # message: must fill out all fields
+        user = User.create(params)
+        if user.invalid?
+            # message: 
             redirect '/signup'
         end
-        @user = User.create(params)
-        session[:user_id] = @user.id
+        session[:user_id] = user.id
         redirect "/home"
     end
 
