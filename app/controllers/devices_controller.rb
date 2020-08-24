@@ -7,7 +7,8 @@ class DevicesController < ApplicationController
             # message: please login to view your home page
             redirect '/login'
         end
-        @devices = Device.select{|d| d.user = current_user}
+
+        @devices = Device.select{|d| d.user == current_user}
         erb :'devices/home'
     end
     
