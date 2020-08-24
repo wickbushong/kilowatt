@@ -5,6 +5,7 @@ class CreateAppliancesTable < ActiveRecord::Migration
       t.float :power
       t.float :standby
       t.float :usage
+      t.integer :user_id
     end
   end
 end

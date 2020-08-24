@@ -1,3 +1,3 @@
-class Option < Appliance
-    
+class Option < ActiveRecord::Base
+
 end
