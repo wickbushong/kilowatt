@@ -3,14 +3,15 @@
 <h2>Devices</h2>
 <ol>
     <% @devices.each do |device| %>
-        <li><%= device.name %> - <%= device.power %>W - <%= device.usage %> hrs/day
+        <li><%= device.name %>
             <ul>
+                <li><%= device.power %>W - <%= device.usage %> hrs/day</li>
                 <li><%= (device.power/1000)*device.usage %>kW·h per day</li>
             </ul>
         </li> 
-
+        <br>
     <% end %>
-
+    
 </ol>
 <br>
 <form action="/devices/new" method="GET">
