@@ -1,6 +1,12 @@
 <h1> Create a new account</h1>
 <br>
 
+<% if flash[:error] %>
+    <% flash[:error].each do |err| %>
+        <p><%= err %></p>
+    <% end %>
+<% end %>
+
 <form method="POST" action="/signup">
 
     <label>Enter a username: <input type="text" name="username"></label>
@@ -13,5 +19,5 @@
     <br><br>
 
     <input type="submit" value="Sign Up">
-    
+
 </form>

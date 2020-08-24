@@ -6,8 +6,9 @@ class UsersController < ApplicationController
 
     post '/signup' do
         user = User.create(params)
+        
         if user.invalid?
-            # message: 
+            flash[:error] =  user.errors.full_messages
             redirect '/signup'
         end
         session[:user_id] = user.id
@@ -28,7 +29,7 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             redirect "/home"
         else
-            # message: invalid username or pass
+            flash[:error] = "Invalid username and password combination"
             redirect '/login'
         end
     end
