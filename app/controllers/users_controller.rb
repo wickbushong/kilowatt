@@ -36,6 +36,15 @@ class UsersController < ApplicationController
         end
     end
 
+    get '/logout' do
+        if logged_in?
+            session.destroy
+            redirect to '/login'
+          else
+            redirect to '/'
+          end
+    end
+
     get '/users/:id' do
         if logged_in? && current_user.id == params[:id]
             @user = User.find(params[:id])
