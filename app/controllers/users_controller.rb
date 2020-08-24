@@ -25,10 +25,10 @@ class UsersController < ApplicationController
     end
 
     post '/login' do
-        @user = User.find_by(:username => params[:username])
+        user = User.find_by(:username => params[:username])
  
-        if @user && @user.authenticate(params[:password])
-            session[:user_id] = @user.id
+        if user && user.authenticate(params[:password])
+            session[:user_id] = user.id
             redirect "/home"
         else
             # message: invalid username or pass
@@ -39,10 +39,10 @@ class UsersController < ApplicationController
     get '/logout' do
         if logged_in?
             session.destroy
-            redirect to '/login'
-          else
             redirect to '/'
-          end
+        else
+            redirect to '/'
+        end
     end
 
 end

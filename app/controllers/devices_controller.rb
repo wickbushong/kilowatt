@@ -1,8 +1,8 @@
 class DevicesController < ApplicationController
 
     get '/home' do
-        if logged_in? && current_user.id == params[:id]
-            @user = User.find(params[:id])
+        if logged_in?
+            @user = current_user
         else
             # message: please login to view your home page
             redirect '/login'
