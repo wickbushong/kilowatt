@@ -1,3 +1,8 @@
-# class AppliancesController < ApplicationController
+class AppliancesController < ApplicationController
 
-# end
+    get '/appliances/new' do
+        @user = current_user
+        erb :'appliances/new'
+    end
+
+end
