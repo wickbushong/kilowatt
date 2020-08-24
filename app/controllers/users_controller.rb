@@ -14,12 +14,12 @@ class UsersController < ApplicationController
         end
         @user = User.create(params)
         session[:user_id] = @user.id
-        redirect "/users/#{@user.id}"
+        redirect "/home"
     end
 
     get '/login' do
         if logged_in?
-            redirect "/users/#{current_user.id}"
+            redirect "/home"
         end
         erb :'users/login'
     end
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
  
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
-            redirect "/users/#{@user.id}"
+            redirect "/home"
         else
             # message: invalid username or pass
             redirect '/login'
@@ -44,16 +44,5 @@ class UsersController < ApplicationController
             redirect to '/'
           end
     end
-
-    get '/users/:id' do
-        if logged_in? && current_user.id == params[:id]
-            @user = User.find(params[:id])
-        else
-            # message: please login to view your home page
-            redirect '/login'
-        end
-        erb :'users/home'
-    end
-
 
 end
