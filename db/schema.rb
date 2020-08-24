@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200824134133) do
+ActiveRecord::Schema.define(version: 20200824174745) do
 
-  create_table "appliances", force: :cascade do |t|
+  create_table "devices", force: :cascade do |t|
     t.string  "name"
     t.float   "power"
     t.float   "standby"
