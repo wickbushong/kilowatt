@@ -5,6 +5,8 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
+
+use DevicesController
 use UsersController
-# use AppliancesController
+
 run ApplicationController

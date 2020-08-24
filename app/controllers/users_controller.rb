@@ -14,7 +14,7 @@ class UsersController < ApplicationController
         end
         @user = User.create(params)
         session[:user_id] = @user.id
-        erb :'users/home'
+        redirect "/users/#{@user.id}"
     end
 
     get '/login' do

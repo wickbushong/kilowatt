@@ -1,4 +1,4 @@
-class AppliancesController < ApplicationController
+class DevicesController < ApplicationController
 
     get '/appliances/new' do
         @user = current_user
