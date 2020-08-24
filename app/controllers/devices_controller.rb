@@ -39,5 +39,14 @@ class DevicesController < ApplicationController
         redirect '/home'
     end
 
+    get '/devices/:id' do
+        @device = Device.find(params[:id])
+        if @device.user_id != current_user.id
+            redirect '/home'
+        end
+        @user = current_user
+        erb :'devices/show'
+    end
+
 
 end

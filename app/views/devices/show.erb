@@ -1,0 +1,10 @@
+<h1><%= @user.username %>'s <%= @device.name %></h1>
+
+<ul>
+
+    <li>Power: <%= @device.power %>W</li>
+    <li>Power on standby: <%= @device.standby %>W</li>
+    <li>Daily usage: <%= @device.usage %>hours per day</li>
+    <li><%= (@device.power/1000)*@device.usage + (@device.standby/1000)*(24 - @device.usage) %>kW·h per day</li>
+
+</ul>
