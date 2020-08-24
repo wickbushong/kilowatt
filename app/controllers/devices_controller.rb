@@ -7,6 +7,7 @@ class DevicesController < ApplicationController
             # message: please login to view your home page
             redirect '/login'
         end
+        @devices = Device.select{|d| d.user = current_user}
         erb :'devices/home'
     end
     
@@ -21,18 +22,20 @@ class DevicesController < ApplicationController
             flash[:error] = "Only 1 name input allowed"
             redirect '/devices/new'
         end
-        user = current_user
+        
         if params[:name]
             option = Option.find_by(name: params[:name])
         end
 
-        d = Device.new(
+        d = Device.create(
             name: option ? option[:name] : params[:custom_name],
             power: option ? option[:power] : params[:custom_power],
             standby: option ? option[:standby] : 0,
             usage: params[:usage]
         )
-        binding.pry
+        d.user = current_user
+        d.save
+        redirect '/home'
     end
 
 
