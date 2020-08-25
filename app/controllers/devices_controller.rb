@@ -66,7 +66,7 @@ class DevicesController < ApplicationController
     end
 
     get '/devices/:id' do
-        if params[:id] > Device.last.id
+        if params[:id].to_i > Device.last.id
             flash[:error] = "Device not found"
             redirect '/home'
         end
