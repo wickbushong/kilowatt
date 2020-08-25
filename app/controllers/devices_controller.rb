@@ -66,8 +66,13 @@ class DevicesController < ApplicationController
     end
 
     get '/devices/:id' do
+        if params[:id] > Device.last.id
+            flash[:error] = "Device not found"
+            redirect '/home'
+        end
         @device = Device.find(params[:id])
         if @device.user_id != current_user.id
+            flash[:error] = "Device belongs to other user"
             redirect '/home'
         end
         @user = current_user
