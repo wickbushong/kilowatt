@@ -5,6 +5,12 @@
     <li>Power: <%= @device.power %>W</li>
     <li>Power on standby: <%= @device.standby %>W</li>
     <li>Daily usage: <%= @device.usage %>hours per day</li>
-    <li><%= (@device.power/1000)*@device.usage + (@device.standby/1000)*(24 - @device.usage) %>kW·h per day</li>
+    <li>Daily power consumption: <%= (@device.power/1000)*@device.usage + (@device.standby/1000)*(24 - @device.usage) %>kW·h per day</li>
+    <li>Daily power consumption on standby: <%= (@device.standby/1000)*(24 - @device.usage) %>kW·h per day</li>
 
 </ul>
+
+<form method="GET" action="">
+
+
+</form>
