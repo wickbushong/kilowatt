@@ -56,6 +56,7 @@ class DevicesController < ApplicationController
             standby: params[:standby],
             usage: params[:usage]
         )
+        redirect "/devices/#{@device.id}"
     end
 
     get '/devices/:id' do
