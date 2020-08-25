@@ -19,6 +19,7 @@ class DevicesController < ApplicationController
     end
 
     post '/devices' do
+        binding.pry
         if params[:custom_name] != "" && params[:name]
             flash[:error] = "Only 1 name input allowed"
             redirect '/devices/new'
