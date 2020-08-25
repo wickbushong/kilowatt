@@ -3,15 +3,19 @@
 <h3>You can choose a device from the drop down menu or create a custom device</h3>
 <form method="POST" action="/devices">
 
-
-    <% if flash[:error] %>
-        <p><%= flash[:error] %></p>
-    <% end %>
+    <p><%= flash[:error] if flash[:error] %></p>
+ 
     <label>Create a device: <br>
         <label>Device name: <input type="text" name="custom_name"></label>
-        <label>Device power usage (watts): <input type="text" name="custom_power"></label>
+        <br>
+        <label>Power consumption (watts): <input type="text" name="custom_power"></label>
+        <br>
+        <label>Standby power consumption (watts): <input type="text" name="custom_standby"></label>
     </label>
-    <br><br>
+    <br>
+
+    <h3>OR...</h3>
+
     <label>Choose a device:
         <select name="name">
             <option value="" selected disabled hidden>Choose device</option>
@@ -22,7 +26,7 @@
     </label>
     <br><br>
     <label>Hours used per day: 
-        <input type="text" name="usage">
+        <input type="text" name="usage"> *required
     </label>
 
     <br><br>

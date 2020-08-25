@@ -31,7 +31,7 @@ class DevicesController < ApplicationController
         d = Device.create(
             name: option ? option[:name] : params[:custom_name],
             power: option ? option[:power] : params[:custom_power],
-            standby: option ? option[:standby] : 0,
+            standby: option ? option[:standby] : params[:custom_standby],
             usage: params[:usage]
         )
         d.user = current_user
