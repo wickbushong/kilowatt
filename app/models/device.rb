@@ -5,4 +5,5 @@ class Device < ActiveRecord::Base
     validates :name, presence: true
     validates :usage, presence: true, numericality: true
     validates :power, presence: true, numericality: true
+    validates :stamdby, presence: true, numericality: true
 end

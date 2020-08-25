@@ -24,10 +24,6 @@ class DevicesController < ApplicationController
             flash[:error] = "Only 1 name input allowed"
             redirect '/devices/new'
         end
-        
-        if params[:name]
-            option = Option.find_by(name: params[:name])
-        end
 
         d = Device.create(
             name: option ? option[:name] : params[:custom_name],
@@ -35,9 +31,13 @@ class DevicesController < ApplicationController
             standby: option ? option[:standby] : params[:custom_standby],
             usage: params[:usage]
         )
+        
         d.user = current_user
-        d.save
-        redirect '/home'
+        if d.save
+            redirect '/home'
+        end
+        flash[:error] = d.errors.full_messages
+        redirect '/devices/new'
     end
 
     get '/devices/:id/edit' do

@@ -3,8 +3,12 @@
 <h3>You can choose a device from the drop down menu or create a custom device</h3>
 <form method="POST" action="/devices">
 
-    <p><%= flash[:error] if flash[:error] %></p>
- 
+<% if flash[:error] %>
+    <% flash[:error].each do |err|  %>
+        <p><%= err %></p>
+    <% end %>
+<% end %>
+
     <label>Create a device: <br>
         <label>Device name: <input type="text" name="custom_name"></label>
         <br>
