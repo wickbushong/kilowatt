@@ -4,7 +4,7 @@ class DevicesController < ApplicationController
         if logged_in?
             @user = current_user
         else
-            # message: please login to view your home page
+            flah[:error] = "Please login in to view your homepage"
             redirect '/login'
         end
 
@@ -50,6 +50,10 @@ class DevicesController < ApplicationController
 
     patch '/devices/:id' do
         @device = Device.find(params[:id])
+        if @device.user_id != current_user.id
+            flash[:error] = "Device belongs to other user"
+            redirect '/home'
+        end
         @device.update(
             name: params[:name],
             power: params[:power],
@@ -61,6 +65,10 @@ class DevicesController < ApplicationController
 
     delete '/devices/:id' do
         @device = Device.find(params[:id])
+        if @device.user_id != current_user.id
+            flash[:error] = "Device belongs to other user"
+            redirect '/home'
+        end
         @device.destroy
         redirect '/home'
     end

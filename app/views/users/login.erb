@@ -1,9 +1,9 @@
 <h1>Log In</h1>
 <br>
 
-<% if flash[:error] %>
-    <p><%= flash[:error] %></p>
-<% end %>
+
+    <p><%= flash[:error] if flash[:error]%></p>
+
 
 <form method="POST" action="/login">
 
