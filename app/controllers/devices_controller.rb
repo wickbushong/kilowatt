@@ -44,6 +44,7 @@ class DevicesController < ApplicationController
         if @device.user_id != current_user.id
             redirect '/home'
         end
+        @user = current_user
         erb :'devices/edit'
     end
 

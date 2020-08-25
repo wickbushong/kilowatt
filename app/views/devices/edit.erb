@@ -1,0 +1,18 @@
+<h1>Update <%= @user.username %>'s <%= @device.name %></h1>
+
+<form method="POST" action="/devices/<%= @device.id %>">
+    <input type="hidden" id="hidden" name="_method" value="PATCH">
+
+    <label>Edit name: <input type="text" name="name" value="<%= @device.name %>"></label>
+    <br>
+    <label>Edit power: <input type="text" name="power" value="<%= @device.power %>">W</label>
+    <br>
+    <label>Edit standby power: <input type="text" name="standby" value="<%= @device.standby %>">W</label>
+    <br>
+    <label>Edit daily usage: <input type="text" name="usage" value="<%= @device.usage %>">hours/day</label>
+    <br>
+
+    <input type="submit" value="Make Changes">
+
+
+</form>
