@@ -5,7 +5,7 @@
     <% @devices.each do |device| %>
         <li><%= device.name %>
             <ul>
-                <li><%= (device.power/1000)*device.usage + (@device.standby/1000)*(24 - @device.usage) %>kW·h per day</li>
+                <li><%= ((device.power/1000)*device.usage + (device.standby/1000)*(24 - device.usage)).round(5) %> kW·h per day</li>
             </ul>
         </li> 
         <br>

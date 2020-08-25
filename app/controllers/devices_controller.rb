@@ -59,6 +59,12 @@ class DevicesController < ApplicationController
         redirect "/devices/#{@device.id}"
     end
 
+    delete '/devices/:id' do
+        @device = Device.find(params[:id])
+        @device.destroy
+        redirect '/home'
+    end
+
     get '/devices/:id' do
         @device = Device.find(params[:id])
         if @device.user_id != current_user.id
