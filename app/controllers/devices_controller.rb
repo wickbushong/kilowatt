@@ -49,7 +49,13 @@ class DevicesController < ApplicationController
     end
 
     patch '/devices/:id' do
-        binding.pry
+        @device = Device.find(params[:id])
+        @device.update(
+            name: params[:name],
+            power: params[:power],
+            standby: params[:standby],
+            usage: params[:usage]
+        )
     end
 
     get '/devices/:id' do
