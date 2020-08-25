@@ -18,7 +18,7 @@ class DevicesController < ApplicationController
         erb :'devices/new'
     end
 
-    post '/devices/new' do
+    post '/devices' do
         if params[:custom_name] != "" && params[:name]
             flash[:error] = "Only 1 name input allowed"
             redirect '/devices/new'
