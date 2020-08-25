@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_174745) do
+ActiveRecord::Schema.define(version: 2020_08_25_184636) do
+
+  create_table "device_groups", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "device_id"
+  end
 
   create_table "devices", force: :cascade do |t|
     t.string "name"
@@ -18,6 +23,10 @@ ActiveRecord::Schema.define(version: 2020_08_24_174745) do
     t.float "standby"
     t.float "usage"
     t.integer "user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "options", force: :cascade do |t|
