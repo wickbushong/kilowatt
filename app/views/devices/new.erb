@@ -33,6 +33,12 @@
         <input type="text" name="usage"> *required
     </label>
 
+    <label>Group this device: 
+        <% @groups.each do |group| %>
+            <input type="checkbox" name="group[<%= group.name %>]" value="<%= group.name %>">
+        <% end %>
+    </label>
+
     <br><br>
     <input type="submit" value="Add Device">
 </form>

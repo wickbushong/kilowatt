@@ -14,11 +14,13 @@ class DevicesController < ApplicationController
     
     get '/devices/new' do
         @options = Option.all
+        @groups = Group.all
         @user = current_user
         erb :'devices/new'
     end
 
     post '/devices' do
+        binding.pry
         if params[:custom_name] != "" && params[:name]
             flash[:error] = "Only 1 name input allowed"
             redirect '/devices/new'
@@ -27,16 +29,14 @@ class DevicesController < ApplicationController
         if params[:name]
             option = Option.find_by(name: params[:name])
         end
-        binding.pry
+        
         d = Device.create(
             name: option ? option[:name] : params[:custom_name],
             power: params[:custom_power].empty? ? option[:power] : params[:custom_power],
             standby: params[:custom_standby].empty? ? option[:standby] : params[:custom_standby],
             usage: params[:usage]
         )
-        
         d.user = current_user
-        
         if d.save
             redirect '/home'
         end
