@@ -1,0 +1,19 @@
+<h1>Edit <%= current_user %>'s <%= @group %></h1>
+<br>
+<form method="POST" action="/groups/<%= @group.id %>">
+    <input type="hidden" id="hidden" name="_method" value="PATCH">
+    <label>Group name: <input type="text" name="name"></label>
+    <br>
+    <% if !current_user.devices.empty? %>
+        <br>
+        <label>Devices
+        <br>
+        <% current_user.devices.each do |device| %>
+            <label><input type="checkbox" name="device_ids[]" value="<%= device.id %>" <%= "checked" if @group.devices.include?(device) %>> <%= device.name %>
+            </label>
+            <br>
+        <% end %>
+        <br>
+    <% end %>
+    <input type="submit" value="Create Group">
+</form>
