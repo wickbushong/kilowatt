@@ -7,14 +7,17 @@
     <li>Daily usage: <%= @device.usage %> hours per day</li>
     <li>Daily power consumption: <%= ((@device.power/1000)*@device.usage + (@device.standby/1000)*(24 - @device.usage)).round(5) %> kW·h per day</li>
     <li>Daily power consumption on standby: <%= ((@device.standby/1000)*(24 - @device.usage)).round(5) %> kW·h per day</li>
+    <br>
     <li>Groups: 
-        <% @device.groups.each do |group| %>
-            <li>group.name</li>
-        <% end %>
+        <ul>
+            <% @device.groups.each do |group| %>
+                <li><%= group.name %></li>
+            <% end %>
+        </ul>
     </li>
 
 </ul>
-
+<br>
 <form method="GET" action="/devices/<%= @device.id %>/edit">
     <input type="submit" value="Edit Device">
 </form>
