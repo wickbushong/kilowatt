@@ -15,6 +15,10 @@ class GroupsController < ApplicationController
         end
         erb :'groups/new'
     end
+
+    post '/groups' do
+        binding.pry
+    end
     
     get '/groups/:id' do
         @group = Group.find(params[:id])
