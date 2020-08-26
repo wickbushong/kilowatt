@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
         if !logged_in?
             flash[:error] = "Must be logged in to view groups"
             redirect '/login'
-        elsif !current_groups.include?(@group)
+        elsif !current_user.groups.include?(@group)
             flash[:error] = "That group belongs to another user"
             redirect '/groups'
         end

@@ -11,7 +11,14 @@
     <br>
     <label>Edit daily usage: <input type="text" name="usage" value="<%= @device.usage %>">hours/day</label>
     <br>
-
+    <label>Edit groups:
+    <br>
+        <% @user.groups.each do |group| %>
+            <input type="checkbox" name="group_ids[]" value="<%= group.id %>"> <%= group.name %></input>
+            <br>
+        <% end %>
+    </label>
+    <br>
     <input type="submit" value="Make Changes">
 
 

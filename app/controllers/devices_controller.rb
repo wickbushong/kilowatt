@@ -68,7 +68,8 @@ class DevicesController < ApplicationController
             name: params[:name],
             power: params[:power],
             standby: params[:standby],
-            usage: params[:usage]
+            usage: params[:usage],
+            group_ids: params[:group_ids]
         )
         redirect "/devices/#{@device.id}"
     end
