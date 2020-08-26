@@ -3,5 +3,5 @@ class User < ActiveRecord::Base
     validates :username, presence: true, uniqueness: true
     validates :email, presence: true, uniqueness: true
     has_many :groups
-    has_many :devices, through: :groups
+    has_many :devices
 end

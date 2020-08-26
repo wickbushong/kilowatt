@@ -1,6 +1,5 @@
 class Group < ActiveRecord::Base
     belongs_to :user
-    has_many :device_groups
-    has_many :devices, through: :device_groups
+    has_and_belongs_to_many :devices
     validates :name, presence: true
 end
