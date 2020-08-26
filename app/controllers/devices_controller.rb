@@ -14,6 +14,7 @@ class DevicesController < ApplicationController
     
     get '/devices/new' do
         if !logged_in?
+            flash[:error] = "Must be logged in to create devices"
             redirect '/login'
         end
         @options = Option.all
