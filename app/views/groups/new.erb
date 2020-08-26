@@ -3,15 +3,15 @@
 <form method="POST" action="/groups">
     <label>Group name: <input type="text" name="name"></label>
     <br>
-    <label>Add devices to this group
-    <br>
-    <% current_user.devices.each do |device| %>
-        <label><input type="checkbox" name="device_ids[]" value="<%= device.id %>"> <%= device.name %>
-        </label>
+    <% if !current_user.devices.empty? %>
+        <label>Add devices to this group
+        <br>
+        <% current_user.devices.each do |device| %>
+            <label><input type="checkbox" name="device_ids[]" value="<%= device.id %>"> <%= device.name %>
+            </label>
+            <br>
+        <% end %>
         <br>
     <% end %>
-
-    <br><br>
-
     <input type="submit" value="Create Group">
 </form>
