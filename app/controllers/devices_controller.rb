@@ -17,12 +17,13 @@ class DevicesController < ApplicationController
             redirect '/login'
         end
         @options = Option.all
-        @groups = Group.all
+        @groups = current_user.groups
         @user = current_user
         erb :'devices/new'
     end
 
     post '/devices' do
+        
         if params[:custom_name] != "" && params[:name]
             flash[:error] = "Only 1 name input allowed"
             redirect '/devices/new'
@@ -36,16 +37,11 @@ class DevicesController < ApplicationController
             name: option ? option[:name] : params[:custom_name],
             power: params[:custom_power].empty? ? option[:power] : params[:custom_power],
             standby: params[:custom_standby].empty? ? option[:standby] : params[:custom_standby],
-            usage: params[:usage]
+            usage: params[:usage],
+            group_ids: params[:group_ids]
         )
         d.user = current_user
         
-        if params[:groups]
-            params[:groups].each do |group_id|
-                Group.find(group_id).devices << d
-            end
-        end
-
         if d.save
             redirect '/home'
         end

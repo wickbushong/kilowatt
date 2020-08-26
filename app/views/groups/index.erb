@@ -1,1 +1,6 @@
-only show groups that have an item that belongs to the current user
+<h1><%= current_user.username %>'s Groups</h1>
+<br>
+<% current_groups.each do |group| %>
+    <h3><%= group.name %></h3>
+<br>
+<% end %>

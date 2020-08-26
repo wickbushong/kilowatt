@@ -6,7 +6,7 @@ end
 
 use Rack::MethodOverride
 
-
+use GroupsController
 use DevicesController
 use UsersController
 

@@ -1,3 +1,6 @@
+Group.destroy_all
+Option.destroy_all
+
 Scraper.call
 
 groups = ["Lighting", "Kitchen", "Living Room", "Bedroom", "Garage", "Backyard", "Laundry", "Bathroom", "Climate Control", ]
