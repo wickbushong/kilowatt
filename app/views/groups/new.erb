@@ -8,8 +8,10 @@
     <% current_user.devices.each do |device| %>
         <label><input type="checkbox" name="device_ids[]" value="<%= device.id %>"> <%= device.name %>
         </label>
+        <br>
     <% end %>
 
+    <br><br>
 
     <input type="submit" value="Create Group">
 </form>

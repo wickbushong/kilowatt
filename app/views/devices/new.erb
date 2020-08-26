@@ -33,14 +33,16 @@
         <input type="text" name="usage"> *required
     </label>
     <br><br>
-    <label>Group this device: 
-        <br>
-        <% @groups.each do |group| %>
-            <input type="checkbox" name="group_ids[]" value="<%= group.id %>"> <%= group.name %></input>
+    <% if !current_user.groups.empty? %>
+        <label>Group this device: 
             <br>
-        <% end %>
-    </label>
-
-    <br><br>
+            <% @groups.each do |group| %>
+                <input type="checkbox" name="group_ids[]" value="<%= group.id %>"> <%= group.name %></input>
+                <br>
+            <% end %>
+        </label>
+        <br><br>
+    <% end %>
+    
     <input type="submit" value="Add Device">
 </form>
