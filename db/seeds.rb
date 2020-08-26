@@ -11,3 +11,15 @@ Scraper.call
 # groups.each do |g|
 #     Group.create(name: g)
 # end
+
+User.create(
+    username: "wick",
+    email: "blah@fake.com",
+    password: "1234"
+)
+
+User.create(
+    username: "user2",
+    email: "number@two.com",
+    password: "pass2"
+)
