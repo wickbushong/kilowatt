@@ -14,7 +14,7 @@
     <label>Edit groups:
     <br>
         <% @user.groups.each do |group| %>
-            <input type="checkbox" name="group_ids[]" value="<%= group.id %>"> <%= group.name %></input>
+            <label><input type="checkbox" name="group_ids[]" value="<%= group.id %>" <%= "checked" if @device.group_ids.include?(group.id) %>> <%= group.name %></label>
             <br>
         <% end %>
     </label>
