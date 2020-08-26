@@ -1,16 +1,4 @@
 class DevicesController < ApplicationController
-
-    get '/home' do
-        if logged_in?
-            @user = current_user
-        else
-            flash[:error] = "Please login in to view your homepage"
-            redirect '/login'
-        end
-
-        @devices = Device.select{|d| d.user == current_user}
-        erb :'devices/home'
-    end
     
     get '/devices/new' do
         if !logged_in?
