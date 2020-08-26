@@ -1,9 +1,10 @@
 <h1>Create a new group</h1>
-
+<br>
 <form method="POST" action="/groups">
     <label>Group name: <input type="text" name="name"></label>
     <br>
     <% if !current_user.devices.empty? %>
+        <br>
         <label>Add devices to this group
         <br>
         <% current_user.devices.each do |device| %>

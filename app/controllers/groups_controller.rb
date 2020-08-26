@@ -17,7 +17,15 @@ class GroupsController < ApplicationController
     end
 
     post '/groups' do
-        binding.pry
+        g = Group.create(
+            name: params[:name],
+            device_ids: params[:device_ids]
+        )
+        if g.save
+            redirect '/home'
+        end
+        flash[:error] = g.errors.full_messages
+        redirect '/devices/new'
     end
     
     get '/groups/:id' do
