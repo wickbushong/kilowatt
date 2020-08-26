@@ -4,7 +4,7 @@ class DevicesController < ApplicationController
         if logged_in?
             @user = current_user
         else
-            flah[:error] = "Please login in to view your homepage"
+            flash[:error] = "Please login in to view your homepage"
             redirect '/login'
         end
 
@@ -13,6 +13,9 @@ class DevicesController < ApplicationController
     end
     
     get '/devices/new' do
+        if !logged_in?
+            redirect '/login'
+        end
         @options = Option.all
         @groups = Group.all
         @user = current_user
@@ -20,7 +23,6 @@ class DevicesController < ApplicationController
     end
 
     post '/devices' do
-        binding.pry
         if params[:custom_name] != "" && params[:name]
             flash[:error] = "Only 1 name input allowed"
             redirect '/devices/new'
@@ -37,6 +39,13 @@ class DevicesController < ApplicationController
             usage: params[:usage]
         )
         d.user = current_user
+        
+        if params[:groups]
+            params[:groups].each do |group_id|
+                Group.find(group_id).devices << d
+            end
+        end
+
         if d.save
             redirect '/home'
         end
