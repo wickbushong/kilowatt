@@ -39,6 +39,17 @@ class GroupsController < ApplicationController
         end
         erb :'groups/edit'
     end
+
+    patch '/groups/:id' do
+        @group = Group.find(params[:id])
+        binding.pry
+        @group.update(
+            name: params[:name],
+            device_ids: params[:device_ids]
+        )
+        redirect "/groups/#{@group.id}"
+    end
+
     
     get '/groups/:id' do
         @group = Group.find(params[:id])

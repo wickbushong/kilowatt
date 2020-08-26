@@ -1,8 +1,8 @@
-<h1>Edit <%= current_user %>'s <%= @group %></h1>
+<h1>Edit <%= current_user.username %>'s <%= @group.name %></h1>
 <br>
 <form method="POST" action="/groups/<%= @group.id %>">
     <input type="hidden" id="hidden" name="_method" value="PATCH">
-    <label>Group name: <input type="text" name="name"></label>
+    <label>Group name: <input type="text" name="name" value="<%= @group.name %>"></label>
     <br>
     <% if !current_user.devices.empty? %>
         <br>
@@ -15,5 +15,5 @@
         <% end %>
         <br>
     <% end %>
-    <input type="submit" value="Create Group">
+    <input type="submit" value="Make Changes">
 </form>
