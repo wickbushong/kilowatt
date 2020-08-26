@@ -25,5 +25,11 @@ class ApplicationController < Sinatra::Base
     def logged_in?
       !!current_user
     end
+
+    def current_groups
+      Group.all.select do |group|
+        !!group.devices.find {|device|device.user == current_user}
+      end
+    end
   end
 end
