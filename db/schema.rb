@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_184636) do
+ActiveRecord::Schema.define(version: 2020_08_27_160752) do
 
   create_table "device_groups", force: :cascade do |t|
     t.integer "group_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_08_25_184636) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
+    t.integer "user_id"
   end
 
   create_table "options", force: :cascade do |t|

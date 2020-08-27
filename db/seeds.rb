@@ -1,8 +1,8 @@
-User.destroy_all
-Device.destroy_all
-DeviceGroup.destroy_all
-Group.destroy_all
-Option.destroy_all
+# User.destroy_all
+# Device.destroy_all
+# DeviceGroup.destroy_all
+# Group.destroy_all
+# Option.destroy_all
 
 Scraper.call
 
