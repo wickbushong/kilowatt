@@ -35,7 +35,7 @@ class DevicesController < ApplicationController
             power: option ? option[:power] : params[:custom_power],
             standby: option ? option[:standby] : params[:custom_standby],
             usage: params[:usage],
-            groups_ids: params[:groups_ids]
+            group_ids: params[:group_ids]
         )
         binding.pry
         if d.save

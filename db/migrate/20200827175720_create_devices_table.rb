@@ -1,6 +1,6 @@
 class CreateDevicesTable < ActiveRecord::Migration[6.0]
   def change
-    create_table :appliances do |t|
+    create_table :devices do |t|
       t.string :name
       t.float :power
       t.float :standby
