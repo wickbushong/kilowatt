@@ -23,9 +23,11 @@ class GroupsController < ApplicationController
         end
         g = Group.create(
             name: params[:name],
-            device_ids: params[:device_ids]
+            device_ids: params[:device_ids],
+            user_id: current_user.id
         )
         if g.save
+            binding.pry
             redirect '/home'
         end
         flash[:error] = g.errors.full_messages
