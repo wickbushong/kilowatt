@@ -27,7 +27,6 @@ class GroupsController < ApplicationController
             user_id: current_user.id
         )
         if g.save
-            binding.pry
             redirect '/home'
         end
         flash[:error] = g.errors.full_messages
