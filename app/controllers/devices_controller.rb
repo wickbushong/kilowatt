@@ -12,7 +12,11 @@ class DevicesController < ApplicationController
     end
 
     post '/devices' do
-        binding.pry
+        if !logged_in?
+            flash[:error] = "Must be logged in to create devices"
+            redirect '/login'
+        end
+        
         if params[:custom_name] != "" && params[:name]
             flash[:error] = "Only 1 name input allowed"
             redirect '/devices/new'
@@ -27,7 +31,11 @@ class DevicesController < ApplicationController
                 name: params[:group_name],
                 user_id: current_user.id
             )
-            params[:group_ids] << g.id.to_s
+            if params[:group_ids]
+                params[:group_ids] << g.id.to_s 
+            else
+                params[:group_ids] = g.id.to_s 
+            end
         end
 
         d = Device.create(
@@ -37,7 +45,6 @@ class DevicesController < ApplicationController
             usage: params[:usage],
             group_ids: params[:group_ids]
         )
-        binding.pry
         if d.save
             redirect '/home'
         end

@@ -5,5 +5,12 @@ class Device < ActiveRecord::Base
     validates :usage, presence: true, numericality: true
     validates :power, presence: true, numericality: true
     validates :standby, presence: true, numericality: true
-    validates :group, presence: true
+    validate :group_validation
+
+
+    def group_validation
+        if groups.empty?
+            errors.add(:group, "must be specified")
+        end
+    end
 end
