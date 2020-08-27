@@ -48,9 +48,7 @@ class UsersController < ApplicationController
             flash[:error] = "Please login in to view your homepage"
             redirect '/login'
         end
-
-        @devices = Device.select{|d| d.user == current_user}
-        erb :'devices/home'
+        erb :'users/home'
     end
 
 end

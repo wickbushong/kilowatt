@@ -1,21 +1,18 @@
 <h1><%= @user.username %>'s Home Page</h1>
 
-<h2>Devices</h2>
 
 <%= flash[:error] if flash[:error] %>
 
-<ol>
-    <% @devices.each do |device| %>
-        <li><a href="/devices/<%= device.id %>"><%= device.name %></a>
-            <ul>
-                <li><%= ((device.power/1000)*device.usage + (device.standby/1000)*(24 - device.usage)).round(5) %> kW·h per day</li>
-            </ul>
-        </li> 
+
+    <% @user.groups.each do |group| %>
+        <h3><a href="/groups/<%= device.id %>"><%= group.name %></a></h3>
+        <ol>
+            <% group.devices.each do |device| %>
+            <li><%= device.name %></li>
+            <% end %>
+        </ol>
         <br>
     <% end %>
-    
-</ol>
-
 
 <br>
 <form action="/groups/new" method="GET">
