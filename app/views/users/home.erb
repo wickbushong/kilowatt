@@ -18,14 +18,16 @@
 
 
 <br>
-<form action="/devices/new" method="GET">
-    <input type="submit" value="Add Device">
-</form>
-<br>
 <form action="/groups/new" method="GET">
     <input type="submit" value="Add Group">
 </form>
 <br>
+<% if @user.groups.length > 0 %>
+<form action="/devices/new" method="GET">
+    <input type="submit" value="Add Device">
+</form>
+<br>
+<% end %>
 <form action="/logout" method="GET">
     <input type="submit" value="Log Out">
 </form>
