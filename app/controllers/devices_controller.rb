@@ -21,7 +21,14 @@ class DevicesController < ApplicationController
         if params[:name]
             option = Option.find_by(name: params[:name])
         end
-        
+        binding.pry
+        if !params[:group_name].empty?
+            g = Group.create(
+                name: params[:group_name],
+                user_id: current_user.id
+            )
+        end
+
         d = Device.create(
             name: option ? option[:name] : params[:custom_name],
             power: params[:custom_power].empty? ? option[:power] : params[:custom_power],
@@ -29,7 +36,6 @@ class DevicesController < ApplicationController
             usage: params[:usage],
             group_ids: params[:group_ids]
         )
-        d.user = current_user
         
         if d.save
             redirect '/home'
