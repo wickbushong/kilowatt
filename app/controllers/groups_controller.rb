@@ -17,6 +17,10 @@ class GroupsController < ApplicationController
     end
 
     post '/groups' do
+        if !logged_in?
+            flash[:error] = "Must be logged in to create groups"
+            redirect '/login'
+        end
         g = Group.create(
             name: params[:name],
             device_ids: params[:device_ids]
@@ -31,7 +35,7 @@ class GroupsController < ApplicationController
     get '/groups/:id/edit' do
         @group = Group.find(params[:id])
         if !logged_in?
-            flash[:error] = "Must be logged in to view groups"
+            flash[:error] = "Must be logged in to edit groups"
             redirect '/login'
         elsif !current_user.groups.include?(@group)
             flash[:error] = "That group belongs to another user"
@@ -41,6 +45,10 @@ class GroupsController < ApplicationController
     end
 
     patch '/groups/:id' do
+        if !logged_in?
+            flash[:error] = "Must be logged in to edit groups"
+            redirect '/login'
+        end
         @group = Group.find(params[:id])
         binding.pry
         @group.update(
