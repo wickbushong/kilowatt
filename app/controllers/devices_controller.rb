@@ -12,7 +12,7 @@ class DevicesController < ApplicationController
     end
 
     post '/devices' do
-        
+        binding.pry
         if params[:custom_name] != "" && params[:name]
             flash[:error] = "Only 1 name input allowed"
             redirect '/devices/new'
@@ -32,12 +32,12 @@ class DevicesController < ApplicationController
 
         d = Device.create(
             name: option ? option[:name] : params[:custom_name],
-            power: params[:custom_power].empty? ? option[:power] : params[:custom_power],
-            standby: params[:custom_standby].empty? ? option[:standby] : params[:custom_standby],
+            power: option ? option[:power] : params[:custom_power],
+            standby: option ? option[:standby] : params[:custom_standby],
             usage: params[:usage],
-            group_ids: params[:group_ids]
+            groups_ids: params[:groups_ids]
         )
-        
+        binding.pry
         if d.save
             redirect '/home'
         end
