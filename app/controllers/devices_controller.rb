@@ -21,12 +21,13 @@ class DevicesController < ApplicationController
         if params[:name]
             option = Option.find_by(name: params[:name])
         end
-        binding.pry
+    
         if !params[:group_name].empty?
             g = Group.create(
                 name: params[:group_name],
                 user_id: current_user.id
             )
+            params[:group_ids] << g.id.to_s
         end
 
         d = Device.create(
