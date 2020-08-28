@@ -1,5 +1,11 @@
 <h1>Update <%= @user.username %>'s <%= @device.name %></h1>
 
+<% if flash[:error] %>
+    <% flash[:error].each do |err| %>
+        <p><%= err %></p>
+    <% end %>
+<% end %>
+
 <form method="POST" action="/devices/<%= @device.id %>">
     <input type="hidden" id="hidden" name="_method" value="PATCH">
 
@@ -18,7 +24,11 @@
                 <br>
             <% end %>
         </label>
-        <br>
+        
+        <label>Create new group: 
+            <input type="text" name="group_name">
+        </label>
+        <br><br>
     <input type="submit" value="Make Changes">
 
 

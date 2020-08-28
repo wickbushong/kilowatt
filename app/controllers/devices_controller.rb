@@ -68,6 +68,19 @@ class DevicesController < ApplicationController
             flash[:error] = "Device belongs to another user"
             redirect '/home'
         end
+      
+        if !params[:group_name].empty?
+            g = Group.create(
+                name: params[:group_name],
+                user_id: current_user.id
+            )
+            if params[:group_ids]
+                params[:group_ids] << g.id.to_s 
+            else
+                params[:group_ids] = g.id.to_s 
+            end
+        end
+
         device.update(
             name: params[:name],
             power: params[:power],
@@ -75,7 +88,11 @@ class DevicesController < ApplicationController
             usage: params[:usage],
             group_ids: params[:group_ids]
         )
-        redirect "/devices/#{device.id}"
+        if device.save
+            redirect "/devices/#{device.id}"
+        end
+        flash[:error] = device.errors.full_messages
+        redirect "/devices/#{device.id}/edit"
     end
 
     delete '/devices/:id' do
