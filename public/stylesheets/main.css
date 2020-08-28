@@ -13,7 +13,7 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
+    background-color: #02780D;
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
@@ -80,6 +80,15 @@
     border-top: 2px solid #ccc;
     margin-top: 20px;
     padding-top: 20px;
+  }
+
+  .navbar {
+    display: inline;
+    padding: 5.5%;
+  }
+
+  h3.navbar {
+    font-size: 26px;
   }
 }
 

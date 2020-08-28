@@ -2,9 +2,9 @@
 <br>
 <form method="POST" action="/groups">
     <label>Group name: <input type="text" name="name"></label>
-    <br>
-    <% if !current_user.devices.empty? %>
-        <br>
+    <br><br>
+    
+    <% if current_user.devices.length > 0 %>
         <label>Add devices to this group
         <br>
         <% current_user.devices.each do |device| %>
@@ -12,7 +12,7 @@
             </label>
             <br>
         <% end %>
-        <br>
     <% end %>
+    <br>
     <input type="submit" value="Create Group">
 </form>

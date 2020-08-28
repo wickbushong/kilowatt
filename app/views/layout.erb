@@ -14,7 +14,19 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
-    <div class="wrapper">
+    <% if logged_in? %>
+      <header class="wrapper">
+        <ul>
+          <li class="navbar"><a href="/home">Home</a></li>
+          <li class="navbar"><a href="/groups/new">New Group</a></li>
+          <li class="navbar"><a href="/devices/new">New Device</a></li>
+          <li class="navbar"><a href="/logout">Logout</a></li>
+          <h3 class="navbar">KILOWATT</h3>
+        </ul>
+        
+      </header>
+    <% end %>
+  <div class="wrapper">
 
         <%= yield %>
 

@@ -1,2 +1,24 @@
 <h1><%= current_user.username %>'s <%= @group.name %></h1>
-
+<h3><%= @group.name %> total daily consumption (including standby): <%= group_consumption(@group) %> kW·h per day</h3>
+<br>
+<ol>
+    <% @group.devices.each do |device| %>
+        <li>
+            <a href="/devices/<%= device.id %>"><%= device.name %></a>
+            <ul>
+                <li>Power consumption: <%= device.power %> W</li>
+                <li>Standby consumption: <%= device.standby %> W</li>
+                <li>Average daily usage: <%= device.usage %> hrs/day</li>
+            </ul>
+        </li>
+        <br><br>
+    <% end %>
+</ol>
+<form method="GET" action='/groups/<%= @group.id %>/edit'>
+    <input type="submit" value="Edit Group">
+</form>
+<br>
+<form method="POST" action='/groups/<%= @group.id %>'>
+    <input type="hidden" id="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Group">
+</form>

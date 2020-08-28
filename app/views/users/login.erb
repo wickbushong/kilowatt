@@ -1,18 +1,16 @@
 <h1>Log In</h1>
 <br>
 
-
     <p><%= flash[:error] if flash[:error]%></p>
 
-
 <form method="POST" action="/login">
-
     <label>Username: <input type="text" name="username"></label>
     <br><br>
-
     <label>Password: <input type="password" name="password"></label>
     <br><br>
-
     <input type="submit" value="Log In">
+</form>
 
+<form method="GET" action="/signup">
+    <input type="submit" value="Sign Up">
 </form>

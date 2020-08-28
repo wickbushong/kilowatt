@@ -1,5 +1,11 @@
 <h1>Update <%= @user.username %>'s <%= @device.name %></h1>
 
+<% if flash[:error] %>
+    <% flash[:error].each do |err| %>
+        <p><%= err %></p>
+    <% end %>
+<% end %>
+
 <form method="POST" action="/devices/<%= @device.id %>">
     <input type="hidden" id="hidden" name="_method" value="PATCH">
 
@@ -10,8 +16,7 @@
     <label>Edit standby power: <input type="text" name="standby" value="<%= @device.standby %>">W</label>
     <br>
     <label>Edit daily usage: <input type="text" name="usage" value="<%= @device.usage %>">hours/day</label>
-    <br>
-    <% if !current_user.groups.empty? %>    
+    <br><br>
         <label>Edit groups:
         <br>
             <% @user.groups.each do |group| %>
@@ -19,9 +24,10 @@
                 <br>
             <% end %>
         </label>
-        <br>
-    <% end %>
+        
+        <label>Create new group: 
+            <input type="text" name="group_name">
+        </label>
+        <br><br>
     <input type="submit" value="Make Changes">
-
-
 </form>
