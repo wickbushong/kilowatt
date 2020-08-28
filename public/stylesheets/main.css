@@ -13,7 +13,7 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: #076414;
+    background-color: #02780D;
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
@@ -27,14 +27,6 @@
     margin: 16px auto;
     max-width: 960px;
     padding: 2.25%; /* 18px / 800px */
-    width: 85%;
-  }
-
-  header {
-    display: inline;
-    margin: 16px auto;
-    max-width: 960px;
-    padding: 2.25%;
     width: 85%;
   }
 
@@ -88,6 +80,10 @@
     border-top: 2px solid #ccc;
     margin-top: 20px;
     padding-top: 20px;
+  }
+
+  .navbar {
+    display: inline;
   }
 }
 

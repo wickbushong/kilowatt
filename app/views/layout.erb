@@ -16,10 +16,12 @@
   <body>
     <% if logged_in? %>
       <header>
-        <h3><a href="/home">Home</a></h3>
-        <h3><a href="/groups/new">New Group</a></h3>
-        <h3><a href="/devices/new">New Device</a></h3>
-        <h3><a href="/logout">Logout</a></h3>
+        <ul>
+          <li class="navbar"><a href="/home">Home</a></li>
+          <li class="navbar"><a href="/groups/new">New Group</a></li>
+          <li class="navbar"><a href="/devices/new">New Device</a></li>
+          <li class="navbar"><a href="/logout">Logout</a></li>
+        </ul>
       </header>
     <% end %>
   <div class="wrapper">
