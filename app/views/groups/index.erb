@@ -1,6 +1,6 @@
 <h1><%= current_user.username %>'s Groups</h1>
 <br>
-<% current_groups.each do |group| %>
-    <h3><%= group.name %></h3>
+<% current_user.groups.each do |group| %>
+    <h3><a href="/groups/<%= group.id %>"><%= group.name %></a> - <%= group.devices.length %> devices - <%= group_consumption(group) %> kW·h per day</h3>
 <br>
 <% end %>
