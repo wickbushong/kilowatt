@@ -1,2 +1,17 @@
 <h1><%= current_user.username %>'s <%= @group.name %></h1>
-
+<br>
+<% binding.pry %>
+<h3>Total daily consumption (including standby): <%=  %></h3>
+<ol>
+    <% @group.devices.each do |device| %>
+        <li>
+            <a href="/devices/<%= device.name %>"><%= device.name %></a>
+            <ul>
+                <li>Power consumption: <%= device.power %> W</li>
+                <li>Standby consumption: <%= device.standby %> W</li>
+                <li>Average daily usage: <%= device.usage %> hrs/day</li>
+            </ul>
+        </li>
+        <br><br>
+    <% end %>
+</ol>
