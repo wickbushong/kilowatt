@@ -31,7 +31,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def group_consumption(group)
-      group.devices.collect{|device| daily_consumption(device)}.inject(0, :+)
+      group.devices.collect{|device| daily_consumption(device)}.inject(0, :+).round(5)
     end
 
   end

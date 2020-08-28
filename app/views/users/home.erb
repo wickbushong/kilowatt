@@ -5,10 +5,10 @@
 
 
     <% @user.groups.each do |group| %>
-        <h3><a href="/groups/<%= group.id %>"><%= group.name %></a></h3>
+        <h3><a href="/groups/<%= group.id %>"><%= group.name %></a> - <%= group_consumption(group) %> kW·h per day</h3>
         <ol>
             <% group.devices.each do |device| %>
-            <li><%= device.name %></li>
+            <li><%= device.name %> - <%= device.power %> W</li>
             <% end %>
         </ol>
         <br>
