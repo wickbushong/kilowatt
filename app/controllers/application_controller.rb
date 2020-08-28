@@ -27,11 +27,15 @@ class ApplicationController < Sinatra::Base
     end
 
     def daily_consumption(device)
-      ((device.power/1000)*device.usage + (device.standby/1000)*(24 - device.usage)).round(5)
+      ((device.power/1000)*device.usage + (device.standby/1000)*(24 - device.usage)).round(3)
     end
 
     def group_consumption(group)
-      group.devices.collect{|device| daily_consumption(device)}.inject(0, :+).round(5)
+      group.devices.collect{|device| daily_consumption(device)}.inject(0, :+).round(3)
+    end
+
+    def user_consumption
+      current_user.devices.collect{|device| daily_consumption(device)}.inject(0, :+).round(3)
     end
 
   end
