@@ -18,6 +18,10 @@
     <input type="submit" value="Return To Homepage">
 </form>
 <br>
+<form method="GET" action='/groups/<%= @group.id %>/edit'>
+    <input type="submit" value="Edit Group">
+</form>
+<br>
 <form method="POST" action='/groups/<%= @group.id %>'>
     <input type="hidden" id="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete Group">

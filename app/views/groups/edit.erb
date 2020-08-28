@@ -8,7 +8,7 @@
         <br>
         <label>Devices
         <br>
-        <% current_user.devices.each do |device| %>
+        <% current_user.devices.uniq.each do |device| %>
             <label><input type="checkbox" name="device_ids[]" value="<%= device.id %>" <%= "checked" if @group.devices.include?(device) %>> <%= device.name %>
             </label>
             <br>

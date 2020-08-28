@@ -50,13 +50,12 @@ class GroupsController < ApplicationController
             flash[:error] = "Must be logged in to edit groups"
             redirect '/login'
         end
-        @group = Group.find(params[:id])
-        binding.pry
-        @group.update(
+        group = Group.find(params[:id])
+        group.update(
             name: params[:name],
             device_ids: params[:device_ids]
         )
-        redirect "/groups/#{@group.id}"
+        redirect "/groups/#{group.id}"
     end
 
     delete '/groups/:id' do
