@@ -79,12 +79,12 @@ class DevicesController < ApplicationController
     end
 
     delete '/devices/:id' do
-        @device = Device.find(params[:id])
-        if @device.user_id != current_user.id
+        device = Device.find(params[:id])
+        if device.user_id != current_user.id
             flash[:error] = "Device belongs to another user"
             redirect '/home'
         end
-        @device.destroy
+        device.destroy
         redirect '/home'
     end
 

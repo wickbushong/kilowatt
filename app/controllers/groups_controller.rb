@@ -60,7 +60,16 @@ class GroupsController < ApplicationController
     end
 
     delete '/groups/:id' do
-        binding.pry
+        group = Group.find(params[:id])
+        if !logged_in?
+            flash[:error] = "Must be logged in to delete groups"
+            redirect '/login'
+        elsif group.user != current_user
+            flash[:error] = "This group belongs to another user"
+            redirect '/home'
+        end
+        group.destroy
+        redirect '/home'
     end
     
     get '/groups/:id' do
