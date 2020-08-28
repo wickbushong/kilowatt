@@ -1,6 +1,7 @@
 class Device < ActiveRecord::Base
     has_many :device_groups
     has_many :groups, through: :device_groups
+    has_many :users, through: :groups
     validates :name, presence: true
     validates :usage, presence: true, numericality: true
     validates :power, presence: true, numericality: true

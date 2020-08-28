@@ -38,5 +38,12 @@ class ApplicationController < Sinatra::Base
       current_user.devices.collect{|device| daily_consumption(device)}.inject(0, :+).round(3)
     end
 
+    def group_exist?(group)
+
+    end
+
+    def device_exist?(device)
+      
+    end
   end
 end
