@@ -7,7 +7,7 @@
     <% if current_user.devices.length > 0 %>
         <label>Add devices to this group
         <br>
-        <% current_user.devices.each do |device| %>
+        <% current_user.devices.uniq.each do |device| %>
             <label><input type="checkbox" name="device_ids[]" value="<%= device.id %>"> <%= device.name %>
             </label>
             <br>
