@@ -54,7 +54,7 @@ class DevicesController < ApplicationController
 
     get '/devices/:id/edit' do
         @device = Device.find(params[:id])
-        if @device.user_id != current_user.id
+        if @device.groups.first.user != current_user
             flash[:error] = "Device belongs to another user"
             redirect '/home'
         end
@@ -63,24 +63,24 @@ class DevicesController < ApplicationController
     end
 
     patch '/devices/:id' do
-        @device = Device.find(params[:id])
-        if @device.user_id != current_user.id
+        device = Device.find(params[:id])
+        if device.groups.first.user != current_user
             flash[:error] = "Device belongs to another user"
             redirect '/home'
         end
-        @device.update(
+        device.update(
             name: params[:name],
             power: params[:power],
             standby: params[:standby],
             usage: params[:usage],
             group_ids: params[:group_ids]
         )
-        redirect "/devices/#{@device.id}"
+        redirect "/devices/#{device.id}"
     end
 
     delete '/devices/:id' do
         device = Device.find(params[:id])
-        if device.user_id != current_user.id
+        if device.groups.first.user != current_user
             flash[:error] = "Device belongs to another user"
             redirect '/home'
         end
@@ -94,7 +94,7 @@ class DevicesController < ApplicationController
             redirect '/home'
         end
         @device = Device.find(params[:id])
-        if @device.user_id != current_user.id
+        if @device.groups.first.user != current_user
             flash[:error] = "Device belongs to other user"
             redirect '/home'
         end

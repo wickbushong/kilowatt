@@ -21,12 +21,12 @@
 <form method="GET" action="/devices/<%= @device.id %>/edit">
     <input type="submit" value="Edit Device">
 </form>
-
+<br>
 <form method="POST" action="/devices/<%= @device.id %>">
     <input type="hidden" id="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete Device">
 </form>
-
+<br>
 <form method="GET" action="/home">
     <input type="submit" value="Return to homepage">
 </form>

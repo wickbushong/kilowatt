@@ -4,7 +4,7 @@
 <ol>
     <% @group.devices.each do |device| %>
         <li>
-            <a href="/devices/<%= device.name %>"><%= device.name %></a>
+            <a href="/devices/<%= device.id %>"><%= device.name %></a>
             <ul>
                 <li>Power consumption: <%= device.power %> W</li>
                 <li>Standby consumption: <%= device.standby %> W</li>
