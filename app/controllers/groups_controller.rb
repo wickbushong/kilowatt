@@ -59,6 +59,9 @@ class GroupsController < ApplicationController
         redirect "/groups/#{@group.id}"
     end
 
+    delete '/groups/:id' do
+        binding.pry
+    end
     
     get '/groups/:id' do
         @group = Group.find(params[:id])
