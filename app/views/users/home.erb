@@ -1,6 +1,10 @@
 <h1><%= @user.username %>'s groups and devices</h1>
 
-<%= flash[:error] if flash[:error] %>
+<% if flash[:error] %>
+    <% flash[:error].each do |err| %>
+        <%= err %>
+    <% end %>
+<% end %>
 
 <h2>
     Average daily consumption - <%= user_consumption %> kW·h per day

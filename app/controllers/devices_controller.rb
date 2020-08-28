@@ -53,6 +53,10 @@ class DevicesController < ApplicationController
     end
 
     get '/devices/:id/edit' do
+        if !device_exists?(params[:id])
+            flash[:error] = "Device doesn't exists"
+            redirect '/home'
+        end
         @device = Device.find(params[:id])
         if @device.users.first != current_user
             flash[:error] = "Device belongs to another user"
@@ -68,7 +72,6 @@ class DevicesController < ApplicationController
             flash[:error] = "Device belongs to another user"
             redirect '/home'
         end
-      
         if !params[:group_name].empty?
             g = Group.create(
                 name: params[:group_name],
@@ -80,7 +83,6 @@ class DevicesController < ApplicationController
                 params[:group_ids] = g.id.to_s 
             end
         end
-
         device.update(
             name: params[:name],
             power: params[:power],
@@ -106,8 +108,8 @@ class DevicesController < ApplicationController
     end
 
     get '/devices/:id' do
-        if params[:id].to_i > Device.last.id
-            flash[:error] = "Device not found"
+        if !device_exists?(params[:id])
+            flash[:error] = "Device doesn't exist"
             redirect '/home'
         end
         @device = Device.find(params[:id])

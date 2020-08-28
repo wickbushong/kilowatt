@@ -34,6 +34,11 @@ class GroupsController < ApplicationController
     end
     
     get '/groups/:id/edit' do
+        if !group_exists?(params[:id])
+            flash[:error] = "Group doesn't exist"
+            redirect '/home'
+        end
+        
         @group = Group.find(params[:id])
         if !logged_in?
             flash[:error] = "Must be logged in to edit groups"
