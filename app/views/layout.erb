@@ -14,12 +14,14 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
-    <header>
-      <h3><a href="/home">Home</a></h3>
-      <h3><a href="/groups/new">New Group</a></h3>
-      <h3><a href="/devices/new">New Device</a></h3>
-      <h3><a href="/logout">Logout</a></h3>
-    </header>
+    <% if logged_in? %>
+      <header>
+        <h3><a href="/home">Home</a></h3>
+        <h3><a href="/groups/new">New Group</a></h3>
+        <h3><a href="/devices/new">New Device</a></h3>
+        <h3><a href="/logout">Logout</a></h3>
+      </header>
+    <% end %>
   <div class="wrapper">
 
         <%= yield %>
