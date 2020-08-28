@@ -54,11 +54,12 @@ class GroupsController < ApplicationController
         if !logged_in?
             flash[:error] = "Must be logged in to edit groups"
             redirect '/login'
-        elsif @group.user != current_user
+        end
+        group = Group.find(params[:id])
+        if group.user != current_user
             flash[:error] = "That group belongs to another user"
             redirect '/groups'
         end
-        group = Group.find(params[:id])
         group.update(
             name: params[:name],
             device_ids: params[:device_ids]
