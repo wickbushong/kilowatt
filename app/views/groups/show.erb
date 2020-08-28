@@ -1,7 +1,7 @@
 <h1><%= current_user.username %>'s <%= @group.name %></h1>
 <br>
-<% binding.pry %>
-<h3>Total daily consumption (including standby): <%=  %></h3>
+
+<h3>Total daily consumption (including standby): <%= group_consumption(@group) %></h3>
 <ol>
     <% @group.devices.each do |device| %>
         <li>
