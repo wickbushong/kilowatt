@@ -84,7 +84,11 @@
 
   .navbar {
     display: inline;
-    padding: 3%;
+    padding: 5.5%;
+  }
+
+  h3.navbar {
+    font-size: 26px;
   }
 }
 
