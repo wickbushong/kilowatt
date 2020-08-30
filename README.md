@@ -1,3 +1,4 @@
-test commit
+Welcome to Kilowatt. This app is designed to help users track energy use in their home.
 
-must rake db:seed
+To run Kilowatt - clone this repo, run 
+
