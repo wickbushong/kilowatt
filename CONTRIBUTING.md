@@ -1,1 +1,0 @@
-If you encounter any bugs or would like to make a pull request, you can do so on GitHub at https://github.com/wickbushong/kilowatt
