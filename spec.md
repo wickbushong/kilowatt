@@ -11,7 +11,7 @@ Specs:
 - [x] Ensure that users can't modify content created by other users -- Device CRUD actions check to ensure user is logged in and that the device belongs to the user
 - [x] Include user input validations -- user controller validates username upon signup and authenticates password upon login
 - [x] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new) -- post '/signup' uses validation error messages
-- [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+- [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
 
 Confirm
 - [x] You have a large number of small Git commits
